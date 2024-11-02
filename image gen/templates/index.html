@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stable Diffusion Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Images with Stable Diffusion</h1>
+        <form action="/generate" method="POST">
+            <label for="prompt">Enter a prompt:</label>
+            <input type="text" id="prompt" name="prompt" required>
+            <button type="submit">Generate Image</button>
+        </form>
+
+        {% if image_path %}
+    <h2>Generated Image:</h2>
+    <img src="{{ image_path }}" alt="Generated Image">
+{% elif error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+    </div>
+</body>
+</html>
